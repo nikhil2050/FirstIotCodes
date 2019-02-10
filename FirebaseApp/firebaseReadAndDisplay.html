@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta  charset="utf-8">
+	<title>my control panel</title>
+</head>
+<body>
+<h1 > lat: </h1>
+<h3 id="lat">  </h3>
+
+<h1 > lon: </h1>
+<h3 id="lon">  </h3>
+
+<h1 > <br> <br> </h1>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBY4Z8qWsjEfMym4G6HDVuAqtIj4c4kPtc",
+    authDomain: "firstiotproject-c401a.firebaseapp.com",
+    databaseURL: "https://firstiotproject-c401a.firebaseio.com",
+    projectId: "firstiotproject-c401a",
+    storageBucket: "firstiotproject-c401a.appspot.com",
+    messagingSenderId: "932085904002"
+  };
+  firebase.initializeApp(config);
+
+
+	var lat = document.getElementById('lat');
+	var dbRef = firebase.database().ref().child('lat');
+	dbRef.on('value', snap => lat.innerText = snap.val());
+
+	var lon= document.getElementById('lon');
+	var dbRef = firebase.database().ref().child('lon');
+	dbRef.on('value', snap => lon.innerText = snap.val());
+
+</script>
+
+
+</body>
+</html>
